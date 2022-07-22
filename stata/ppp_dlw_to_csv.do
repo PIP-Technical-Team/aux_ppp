@@ -2,7 +2,7 @@
 // make sure you change to wherever the aux_cpi repo is stored in your machine
 // In profile.do I set the global wb_dir in my computer for general use
 global auxout c:\Users\wb327173\OneDrive - WBG\Downloads\ECA\GPWG\PIP_repo\
-//cd "${wb_dir}\DECDG\PIP\aux_data\aux_ppp\"
+cd "${auxout}\aux_ppp\"
 global dlw_dir "\\wbgfscifs01\GPWG-GMD\Datalib\GMD-DLW\Support\Support_2005_CPI\"
 
 local pppdirs: dir "${dlw_dir}" dirs "*CPI_*_M", respectcase
@@ -20,7 +20,7 @@ use "${dlw_dir}/Support_2005_CPI_v0`pppvin'_M/Data/Stata/pppdata_allvintages.dta
 cap noi datasignature confirm using "ppp", strict
 if (_rc) {
 	datasignature set, reset saving("ppp", replace)
-  export delimited  "$auxout\\aux_ppp\\ppp.csv" , replace
+  export delimited  "ppp.csv" , replace
 }
 
 
