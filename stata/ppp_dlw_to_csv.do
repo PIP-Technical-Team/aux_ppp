@@ -3,7 +3,7 @@
 // In profile.do I set the global wb_dir in my computer for general use
 global auxout c:\Users\wb327173\OneDrive - WBG\Downloads\ECA\GPWG\PIP_repo\
 cd "${auxout}\aux_ppp\"
-global dlw_dir "\\wbgfscifs01\GPWG-GMD\Datalib\GMD-DLW\Support\Support_2005_CPI"
+global dlw_dir "\\wbgfscifs01\GPWG-GMD\Datalib\GMD-DLW1\GMD\Support\Support_2005_CPI"
 
 local pppdirs: dir "${dlw_dir}" dirs "*CPI_*_M", respectcase
 local pppvins "0"
@@ -16,6 +16,8 @@ disp "`pppvin'"
 
 
 use "${dlw_dir}\Support_2005_CPI_v`pppvin'_M\Data\Stata\pppdata_allvintages.dta", clear
+//dont use the 2017 updated from 2021 PPP
+drop ppp_2017_v2_v2
 
 cap noi datasignature confirm using "ppp", strict
 if (_rc) {
